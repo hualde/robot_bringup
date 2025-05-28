@@ -7,7 +7,7 @@
     <!-- ros2_control plugin  fake-->
     <ros2_control name="RealRobot" type="system">
         <hardware>
-            <plugin>fake_components/GenericSystem</plugin>
+            <plugin>mock_components/GenericSystem</plugin>
         </hardware>
         <joint name="joint_wheel_left">
             <command_interface name="velocity">
