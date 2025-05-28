@@ -4,7 +4,7 @@
     <!-- Include the base robot description -->
     <xacro:include filename="$(find robot_description)/urdf/differential_robot.urdf.xacro"/>
 
-    <!-- ros2_control plugin -->
+    <!-- ros2_control plugin  fake-->
     <ros2_control name="RealRobot" type="system">
         <hardware>
             <plugin>fake_components/GenericSystem</plugin>

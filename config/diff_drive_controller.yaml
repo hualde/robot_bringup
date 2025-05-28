@@ -1,6 +1,6 @@
 controller_manager:
   ros__parameters:
-    update_rate: 30
+    update_rate: 50
     use_sim_time: false
 
     joint_state_broadcaster:
@@ -21,13 +21,13 @@ diff_drive_controller:
     
     # Velocidad
     linear.x.has_velocity_limits: true
-    linear.x.max_velocity: 0.5
-    linear.x.min_velocity: -0.5
+    linear.x.max_velocity: 0.2
+    linear.x.min_velocity: -0.2
     angular.z.has_velocity_limits: true
-    angular.z.max_velocity: 1.0
-    angular.z.min_velocity: -1.0
+    angular.z.max_velocity: 1.5
+    angular.z.min_velocity: -1.5
 
-    publish_rate: 50.0
+    publish_rate: 100.0
     odom_frame_id: odom
     base_frame_id: base_link
     pose_covariance_diagonal: [0.001, 0.001, 0.001, 0.001, 0.001, 0.001]
@@ -41,4 +41,8 @@ diff_drive_controller:
     right_wheel_radius_multiplier: 1.0
 
     # Limits
-    max_acceleration: 3.0 
+    max_acceleration: 1.0
+    
+    # Debug
+    open_loop: true
+    position_feedback: false 
