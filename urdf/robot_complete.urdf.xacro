@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="robot_complete">
+
+    <!-- Include the base robot description -->
+    <xacro:include filename="$(find robot_description)/urdf/differential_robot.urdf.xacro"/>
+
+    <!-- ros2_control plugin -->
+    <ros2_control name="RealRobot" type="system">
+        <hardware>
+            <plugin>fake_components/GenericSystem</plugin>
+        </hardware>
+        <joint name="joint_wheel_left">
+            <command_interface name="velocity">
+                <param name="min">-10</param>
+                <param name="max">10</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+        <joint name="joint_wheel_right">
+            <command_interface name="velocity">
+                <param name="min">-10</param>
+                <param name="max">10</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+        <joint name="caster_roll_joint">
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+        <joint name="caster_pitch_joint">
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+    </ros2_control>
+
+    <!-- ros2_control plugin gazebo -->
+    <gazebo>
+        <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so">
+            <parameters>$(find robot_bringup)/config/diff_drive_controller.yaml</parameters>
+        </plugin>
+    </gazebo>
+    
+</robot> 
